@@ -11,6 +11,7 @@ export const HeroSection = ({
   const { ref, inView } = useInView({ threshold: 0.6 });
 
   useEffect(() => {
+    console.log("inview");
     if (inView) setActiveSection("hero");
   }, [inView, setActiveSection]);
 
