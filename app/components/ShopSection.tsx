@@ -12,7 +12,7 @@ import {
   DialogTrigger,
   DialogFooter,
   DialogClose,
-} from "../components/ui/dialog"; // adjust this import path based on where your Dialog is located
+} from "./ui/dialog"; // adjust this import path based on where your Dialog is located
 type Product = {
   name: string;
   description: string;
@@ -59,7 +59,7 @@ const colorPalettes = [
   },
 ];
 
-export const ServicesSection = ({
+export const ShopSection = ({
   setActiveSection,
 }: {
   setActiveSection: (s: string) => void;
@@ -72,7 +72,7 @@ export const ServicesSection = ({
   const [selectedPalette, setSelectedPalette] = useState<string | null>(null);
 
   useEffect(() => {
-    if (inView) setActiveSection("services");
+    if (inView) setActiveSection("shop");
   }, [inView, setActiveSection]);
 
   // count letters only (ignore spaces & special chars)
