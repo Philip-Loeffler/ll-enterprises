@@ -2,6 +2,7 @@
 
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import Image from "next/image";
 import { InfiniteSlider } from "@/app/components/motion-primitives/infinite-slider";
 export const WorkSection = ({
   setActiveSection,
@@ -31,7 +32,28 @@ export const WorkSection = ({
         <div className="bg-orange-100 rounded-2xl h-48"></div>
       </div> */}
       <InfiniteSlider speedOnHover={20} gap={4}>
-        <img
+        <Image
+          src={"/slider1.png"}
+          alt={"slide 1"}
+          width={380}
+          height={280}
+          className="rounded-lg object-cover"
+        />{" "}
+        <Image
+          src={"/slider2.png"}
+          alt={"slide 2"}
+          width={380}
+          height={280}
+          className="rounded-lg object-cover"
+        />{" "}
+        <Image
+          src={"/slider3.png"}
+          alt={"slide 3"}
+          width={380}
+          height={280}
+          className="rounded-lg object-cover"
+        />
+        {/* <img
           src="https://i.scdn.co/image/ab67616d00001e02ad24c5e36ddcd1957ad35677"
           alt="Dean blunt - Black Metal 2"
           className="aspect-square w-[320px] rounded-[4px]"
@@ -70,7 +92,7 @@ export const WorkSection = ({
           src="https://i.scdn.co/image/ab67616d00001e021624590458126fc8b8c64c2f"
           alt="Lana Del Rey - Ultraviolence"
           className="aspect-square w-[320px] rounded-[4px]"
-        />
+        /> */}
       </InfiniteSlider>
     </section>
   );

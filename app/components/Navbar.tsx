@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const Navbar = ({ activeSection }: Props) => {
-  const sections = ["hero", "work", "services"];
+  const sections = ["hero", "story", "work", "services"];
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/70 backdrop-blur-md flex justify-between items-center px-8 py-4 z-50">

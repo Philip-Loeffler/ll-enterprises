@@ -5,20 +5,46 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-09-30.clover",
 });
 
+enum ProductName {
+  NAMEBANNER = "NameBanner",
+  MINNAMEBANNER = "MiniNameBanner",
+}
+
+const productPriceMap: Record<ProductName, number> = {
+  [ProductName.NAMEBANNER]: 2000,
+  [ProductName.MINNAMEBANNER]: 1500,
+};
+
 export async function POST(req: Request) {
   try {
-    const { quantity = 1 } = await req.json();
+    const {
+      productName,
+      quantity = 1,
+      customName,
+      colorPalette,
+    } = await req.json();
+    // Validate productName
+    if (!productName) {
+      return NextResponse.json(
+        { error: "Invalid or missing productName" },
+        { status: 400 }
+      );
+    }
+    const unitAmount = productPriceMap[productName as ProductName];
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
+
       line_items: [
         {
           price_data: {
             currency: "usd",
             product_data: {
-              name: "Sample Product",
+              name: productName,
+              description: `Customers name: ${customName} | Colors: ${colorPalette}`,
             },
-            unit_amount: 2000, // $20.00
+
+            unit_amount: unitAmount,
           },
           quantity,
         },
