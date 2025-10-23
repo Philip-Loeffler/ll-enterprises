@@ -10,7 +10,7 @@ interface Props {
 
 export const Navbar = ({ activeSection }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const sections = ["hero", "store", "story", "work"];
+  const sections = ["hero", "shop", "story", "work"];
 
   const handleNavClick = (section: string) => {
     document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
@@ -20,7 +20,6 @@ export const Navbar = ({ activeSection }: Props) => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/70 backdrop-blur-md flex justify-between items-center px-8 py-4 z-50">
       <h1 className="font-bold text-xl">
-        {" "}
         <span className="text-[#77BEF0]">L</span>
         <span className="text-[#FFCB61]">i</span>
         <span className="text-[#FF894F]">t</span>

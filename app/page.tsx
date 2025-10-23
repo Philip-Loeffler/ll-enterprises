@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
 import { WorkSection } from "./components/WorkSection";
@@ -9,17 +9,39 @@ import { StorySection } from "./components/StorySection";
 
 export default function HomePage() {
   const [activeSection, setActiveSection] = useState<string>("hero");
+  const [enableSnap, setEnableSnap] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // enable snapping only for desktop width
+      setEnableSnap(window.innerWidth >= 768);
+    };
+
+    // Run immediately on mount
+    handleResize();
+
+    // Watch for resize or orientation changes
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", handleResize);
+    };
+  }, []);
 
   return (
     <main className="bg-white text-black w-full">
       <Navbar activeSection={activeSection} />
-      <div className="snap-y snap-mandatory h-screen overflow-y-scroll scroll-smooth">
+      <div
+        className={`h-screen overflow-y-scroll scroll-smooth ${
+          enableSnap ? "snap-y snap-mandatory" : ""
+        }`}
+      >
         <HeroSection setActiveSection={setActiveSection} />
         <ShopSection setActiveSection={setActiveSection} />
-
         <StorySection setActiveSection={setActiveSection} />
-
-        <WorkSection setActiveSection={setActiveSection} />
+        {/* <WorkSection setActiveSection={setActiveSection} /> */}
       </div>
     </main>
   );

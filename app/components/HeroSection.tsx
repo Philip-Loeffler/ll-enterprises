@@ -21,7 +21,7 @@ export const HeroSection = ({
       ref={ref}
       className="snap-start h-screen flex flex-col items-center justify-center bg-gradient-to-b from-orange-50 to-white text-center"
     >
-      <h1 className="text-7xl font-bold leading-tight flex">
+      <div className="text-3xl md:text-5xl font-bold leading-tight flex">
         <span className="text-[#77BEF0]">L</span>
         <span className="text-[#FFCB61]">i</span>
         <span className="text-[#FF894F]">t</span>
@@ -41,7 +41,7 @@ export const HeroSection = ({
         <span className="text-[#EA5B6F]">.</span>
         <br />
         {/* <span className="font-extrabold text-[100px]">brand</span> */}
-      </h1>
+      </div>
       <p className="text-gray-500 mt-6 text-lg">Make your felt pop ✨</p>
     </section>
   );

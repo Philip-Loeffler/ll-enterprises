@@ -43,7 +43,6 @@ const products: Product[] = [
     productName: "NameBanner",
   },
 ];
-
 const colorPalettes = [
   {
     label: "Autumn Palette",
@@ -54,9 +53,26 @@ const colorPalettes = [
     colors: ["#A3C9D9", "#FFFFFF", "#4F6D7A"],
   },
   {
-    label: "Random Colors",
+    label: "Choose Colors",
     colors: ["#E76F51", "#2A9D8F", "#E9C46A"],
   },
+];
+
+// Custom color set (for per-letter selection)
+const customColors = [
+  "#E76F51",
+  "#2A9D8F",
+  "#E9C46A",
+  "#F4A261",
+  "#264653",
+  "#8AB17D",
+];
+
+// Font options
+const fontOptions = [
+  { label: "Classic Serif", value: "serif" },
+  { label: "Playful Script", value: "cursive" },
+  { label: "Modern Sans", value: "sans-serif" },
 ];
 
 export const ShopSection = ({
@@ -70,16 +86,22 @@ export const ShopSection = ({
   const [nameInput, setNameInput] = useState("");
   const [letterCount, setLetterCount] = useState(0);
   const [selectedPalette, setSelectedPalette] = useState<string | null>(null);
+  const [fontStyle, setFontStyle] = useState<string>("sans-serif");
+  const [letterColors, setLetterColors] = useState<Record<number, string>>({});
 
   useEffect(() => {
     if (inView) setActiveSection("shop");
   }, [inView, setActiveSection]);
 
-  // count letters only (ignore spaces & special chars)
   const handleNameChange = (val: string) => {
     setNameInput(val);
     const lettersOnly = val.replace(/[^a-zA-Z]/g, "");
     setLetterCount(lettersOnly.length);
+    setLetterColors({}); // reset colors if user changes input
+  };
+
+  const handleColorAssign = (index: number, color: string) => {
+    setLetterColors((prev) => ({ ...prev, [index]: color }));
   };
 
   const handleCheckout = async () => {
@@ -92,7 +114,9 @@ export const ShopSection = ({
       body: JSON.stringify({
         productName: selectedProduct.productName,
         quantity: letterCount,
-        colorPalette: selectedPalette, // Include selected palette in checkout data
+        colorPalette: selectedPalette,
+        fontStyle,
+        customLetterColors: letterColors,
       }),
     });
 
@@ -107,11 +131,13 @@ export const ShopSection = ({
 
   return (
     <section
-      id="services"
+      id="shop"
       ref={ref}
-      className="snap-start h-screen flex flex-col items-center justify-center bg-white"
+      className="snap-start h-screen flex flex-col items-center  justify-center bg-gray-50 px-6 sm:px-12 md:mt-0 mt-100"
     >
-      <h2 className="text-5xl font-bold mb-4">Customize Names for you</h2>
+      <h2 className="text-6xl text-gray-900 md:mt-0 font-bold mb-4">
+        Custom Names for you
+      </h2>
       <p className="max-w-2xl text-center text-gray-500 mb-8">
         Choose an option for our textile professionals to start creating
       </p>
@@ -126,13 +152,13 @@ export const ShopSection = ({
                 setNameInput("");
                 setLetterCount(0);
                 setSelectedPalette(null);
+                setFontStyle("sans-serif");
+                setLetterColors({});
               }}
             >
               <div
-                className={`rounded-2xl p-12  flex flex-col cursor-pointer transition-transform hover:scale-105 ${
-                  product.name === "Start Today"
-                    ? "bg-black text-white"
-                    : product.name === "Custom Name Banner"
+                className={`rounded-2xl p-6 md:p-12 flex flex-col cursor-pointer transition-transform hover:scale-105 ${
+                  product.name === "Custom Name Banner"
                     ? "bg-orange-100"
                     : "bg-gray-100"
                 }`}
@@ -141,7 +167,7 @@ export const ShopSection = ({
                 <Image
                   src={product.image}
                   alt={product.name}
-                  width={380}
+                  width={280}
                   height={280}
                   className="rounded-lg object-cover"
                 />
@@ -152,7 +178,7 @@ export const ShopSection = ({
               </div>
             </DialogTrigger>
 
-            <DialogContent>
+            <DialogContent className="max-h-[80vh] overflow-y-auto">
               {selectedProduct && (
                 <div className="flex flex-col sm:flex-row gap-6">
                   {/* Product Info */}
@@ -182,6 +208,27 @@ export const ShopSection = ({
                           <span className="font-semibold">{letterCount}</span>
                         </p>
                       )}
+                    </div>
+                    <div>
+                      <p className="font-medium mb-2 mt-2">
+                        Choose Font Style:
+                      </p>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        {fontOptions.map((font) => (
+                          <button
+                            key={font.value}
+                            onClick={() => setFontStyle(font.value)}
+                            style={{ fontFamily: font.value }}
+                            className={`border rounded-md px-4 py-2 text-lg transition ${
+                              fontStyle === font.value
+                                ? "ring-2 ring-blue-600 bg-blue-50"
+                                : "hover:bg-gray-50"
+                            }`}
+                          >
+                            {font.label}
+                          </button>
+                        ))}
+                      </div>
                     </div>
 
                     {/* Color Palette Selection */}
@@ -214,6 +261,66 @@ export const ShopSection = ({
                         ))}
                       </div>
                     </div>
+                    {/* Custom Colors per Letter */}
+                    {nameInput && selectedPalette === "Choose Colors" && (
+                      <div>
+                        <p className="font-medium mb-2">
+                          Or assign custom colors per letter:
+                        </p>
+                        <div className="flex flex-wrap gap-3">
+                          {nameInput.split("").map((char, i) => (
+                            <Dialog key={i}>
+                              <DialogTrigger asChild>
+                                <button className="w-16 h-16 border-2 border-black bg-white rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-center">
+                                  <span
+                                    className="text-4xl font-bold"
+                                    style={{
+                                      fontFamily: fontStyle,
+                                      color: letterColors[i] || "#000",
+                                    }}
+                                  >
+                                    {char}
+                                  </span>
+                                </button>
+                              </DialogTrigger>
+                              <DialogContent className="sm:max-w-md">
+                                <DialogHeader>
+                                  <DialogTitle>
+                                    Choose Color for "{char}"
+                                  </DialogTitle>
+                                  <DialogDescription>
+                                    Select a color for this letter
+                                  </DialogDescription>
+                                </DialogHeader>
+                                <div className="grid grid-cols-3 gap-4 py-4">
+                                  {customColors.map((color) => (
+                                    <button
+                                      key={color}
+                                      onClick={() => {
+                                        handleColorAssign(i, color);
+                                      }}
+                                      className={`w-full h-20 rounded-lg border-2 transition-all ${
+                                        letterColors[i] === color
+                                          ? "ring-4 ring-blue-500 border-blue-500 scale-105"
+                                          : "border-gray-300 hover:scale-105"
+                                      }`}
+                                      style={{ backgroundColor: color }}
+                                    />
+                                  ))}
+                                </div>
+                                <DialogFooter>
+                                  <DialogClose asChild>
+                                    <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                      Done
+                                    </button>
+                                  </DialogClose>
+                                </DialogFooter>
+                              </DialogContent>
+                            </Dialog>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                     {/* Checkout Button */}
                     <DialogFooter className="mt-6">

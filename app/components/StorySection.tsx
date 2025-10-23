@@ -19,14 +19,14 @@ export const StorySection = ({
     <section
       id="story"
       ref={ref}
-      className="snap-start h-screen flex flex-col justify-center bg-gray-50 px-6 sm:px-12"
+      className="snap-start h-screen flex flex-col justify-center bg-gray-50 px-6 sm:px-12 md:mt-0 mt-100"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 max-w-6xl mx-auto">
         {/* Image side */}
         <div className="flex justify-center">
           <div className="relative w-120 h-120  rounded-2xl overflow-hidden shadow-lg">
             <Image
-              src="/hannah.png" // 👈 Place your image in /public/images/maker.jpg
+              src="/hannah.png"
               alt="Our felt maker at work"
               fill
               className="object-cover"
