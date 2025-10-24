@@ -12,7 +12,8 @@ import {
   DialogTrigger,
   DialogFooter,
   DialogClose,
-} from "./ui/dialog"; // adjust this import path based on where your Dialog is located
+} from "./ui/dialog";
+
 type Product = {
   name: string;
   description: string;
@@ -24,14 +25,14 @@ const products: Product[] = [
   {
     name: "Custom Name Banner",
     description:
-      "Custom felt letter banners for your child’s room or special occasion. Choose any name or word!",
+      "Custom felt letter banners for your child’s room or special occasion. Letters size: 5.5 x 5.5 inches. Choose any name or word!",
     image: "/name_banner.png",
     productName: "NameBanner",
   },
   {
     name: "Mini Name Banner",
     description:
-      "A smaller, lightweight version perfect for nurseries, doors, or gifting.",
+      "A smaller, lightweight version perfect for nurseries, doors, or gifting.  Letters size: 4 x 4 inches.",
     image: "/mini_name_banner.png",
     productName: "MiniNameBanner",
   },
@@ -43,6 +44,7 @@ const products: Product[] = [
     productName: "NameBanner",
   },
 ];
+
 const colorPalettes = [
   {
     label: "Autumn Palette",
@@ -58,7 +60,6 @@ const colorPalettes = [
   },
 ];
 
-// Custom color set (for per-letter selection)
 const customColors = [
   "#E76F51",
   "#2A9D8F",
@@ -68,11 +69,13 @@ const customColors = [
   "#8AB17D",
 ];
 
-// Font options
 const fontOptions = [
-  { label: "Classic Serif", value: "serif" },
-  { label: "Playful Script", value: "cursive" },
-  { label: "Modern Sans", value: "sans-serif" },
+  { label: "Cooper Black", value: "'Cooper Black', serif" },
+  {
+    label: "Franklin Gothic Demi Cond",
+    value: "'Franklin Gothic Demi Cond', sans-serif",
+  },
+  { label: "WR Buruh Kota", value: "'WR Buruh Kota', sans-serif" },
 ];
 
 export const ShopSection = ({
@@ -97,7 +100,7 @@ export const ShopSection = ({
     setNameInput(val);
     const lettersOnly = val.replace(/[^a-zA-Z]/g, "");
     setLetterCount(lettersOnly.length);
-    setLetterColors({}); // reset colors if user changes input
+    setLetterColors({});
   };
 
   const handleColorAssign = (index: number, color: string) => {
@@ -106,8 +109,12 @@ export const ShopSection = ({
 
   const handleCheckout = async () => {
     if (!selectedProduct || letterCount === 0) return;
-
     setLoading(true);
+    const colorMapping = nameInput
+      .split("")
+      .map((char, i) => `${char}=${letterColors[i] || "default"}`)
+      .join(", ");
+
     const res = await fetch("/api/checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -116,7 +123,7 @@ export const ShopSection = ({
         quantity: letterCount,
         colorPalette: selectedPalette,
         fontStyle,
-        customLetterColors: letterColors,
+        customLetterColors: colorMapping,
       }),
     });
 
@@ -133,10 +140,10 @@ export const ShopSection = ({
     <section
       id="shop"
       ref={ref}
-      className="snap-start h-screen flex flex-col items-center  justify-center bg-gray-50 px-6 sm:px-12 md:mt-0 mt-100"
+      className="snap-start h-screen flex flex-col items-center justify-center bg-gray-50 px-6 sm:px-12 md:mt-0 mt-100"
     >
       <h2 className="text-6xl text-gray-900 md:mt-0 font-bold mb-4">
-        Custom Names for you
+        Custom names for you
       </h2>
       <p className="max-w-2xl text-center text-gray-500 mb-8">
         Choose an option for our textile professionals to start creating
@@ -163,7 +170,6 @@ export const ShopSection = ({
                     : "bg-gray-100"
                 }`}
               >
-                {/* <div className="w-full sm:w-1/3 flex justify-center items-center"> */}
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -171,17 +177,67 @@ export const ShopSection = ({
                   height={280}
                   className="rounded-lg object-cover"
                 />
-                {/* </div> */}
                 <p className="text-lg flex justify-center pt-10 font-semibold">
                   {product.name}
                 </p>
               </div>
             </DialogTrigger>
 
-            <DialogContent className="max-h-[80vh] overflow-y-auto">
+            {/* --- DIALOG CONTENT --- */}
+            <DialogContent className="max-h-[85vh] overflow-y-auto lg:max-w-5xl">
               {selectedProduct && (
-                <div className="flex flex-col sm:flex-row gap-6">
-                  {/* Product Info */}
+                <div className="flex flex-col lg:flex-row gap-8">
+                  {/* LEFT SIDE: Banner Simulation Preview */}
+                  <div className="hidden lg:flex flex-1 items-center justify-center bg-gray-100 rounded-2xl p-6 relative overflow-hidden">
+                    {/* Curved string using SVG */}
+                    <svg
+                      className="absolute top-1/3 left-0 w-full"
+                      height="120"
+                      viewBox="0 0 600 120"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0,40 Q300,100 600,40"
+                        stroke="#9CA3AF"
+                        strokeWidth="3"
+                        fill="transparent"
+                      />
+                    </svg>
+
+                    {nameInput ? (
+                      <div
+                        className="flex justify-center items-end gap-4 relative"
+                        style={{ fontFamily: fontStyle }}
+                      >
+                        {nameInput.split("").map((char, i) => (
+                          <div
+                            key={i}
+                            className="flex flex-col items-center relative"
+                          >
+                            {/* Grey hanging line */}
+                            <div className="w-[2px] h-8 bg-gray-400 z-10" />
+
+                            {/* Felt letter */}
+                            <span
+                              className="text-7xl font-bold px-2 select-none"
+                              style={{
+                                color: letterColors[i] || "#000",
+                                transform: `rotate(${Math.sin(i) * 5}deg)`,
+                              }}
+                            >
+                              {char}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-gray-400 text-center">
+                        Start typing a name to preview it here
+                      </p>
+                    )}
+                  </div>
+
+                  {/* RIGHT SIDE: FORM */}
                   <div className="flex-1">
                     <DialogHeader>
                       <DialogTitle>{selectedProduct.name}</DialogTitle>
@@ -209,6 +265,8 @@ export const ShopSection = ({
                         </p>
                       )}
                     </div>
+
+                    {/* Font selection */}
                     <div>
                       <p className="font-medium mb-2 mt-2">
                         Choose Font Style:
@@ -231,7 +289,7 @@ export const ShopSection = ({
                       </div>
                     </div>
 
-                    {/* Color Palette Selection */}
+                    {/* Color Palettes */}
                     <div className="mt-6">
                       <p className="font-medium mb-2">Choose Colors:</p>
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -261,10 +319,11 @@ export const ShopSection = ({
                         ))}
                       </div>
                     </div>
-                    {/* Custom Colors per Letter */}
+
+                    {/* Per-letter colors */}
                     {nameInput && selectedPalette === "Choose Colors" && (
                       <div>
-                        <p className="font-medium mb-2">
+                        <p className="font-medium mb-2 mt-4">
                           Or assign custom colors per letter:
                         </p>
                         <div className="flex flex-wrap gap-3">
@@ -296,9 +355,9 @@ export const ShopSection = ({
                                   {customColors.map((color) => (
                                     <button
                                       key={color}
-                                      onClick={() => {
-                                        handleColorAssign(i, color);
-                                      }}
+                                      onClick={() =>
+                                        handleColorAssign(i, color)
+                                      }
                                       className={`w-full h-20 rounded-lg border-2 transition-all ${
                                         letterColors[i] === color
                                           ? "ring-4 ring-blue-500 border-blue-500 scale-105"
@@ -322,19 +381,19 @@ export const ShopSection = ({
                       </div>
                     )}
 
-                    {/* Checkout Button */}
-                    <DialogFooter className="mt-6">
+                    {/* Checkout buttons */}
+                    <DialogFooter className="mt-6 flex flex-col sm:flex-row gap-3">
                       <button
                         onClick={handleCheckout}
                         disabled={
                           loading || letterCount === 0 || !selectedPalette
                         }
-                        className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 disabled:opacity-50"
+                        className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 disabled:opacity-50 w-full sm:w-auto"
                       >
                         {loading ? "Redirecting..." : "Buy Now"}
                       </button>
                       <DialogClose asChild>
-                        <button className="border px-4 py-3 rounded-lg hover:bg-gray-100">
+                        <button className="border px-6 py-3 rounded-lg hover:bg-gray-100 w-full sm:w-auto">
                           Cancel
                         </button>
                       </DialogClose>

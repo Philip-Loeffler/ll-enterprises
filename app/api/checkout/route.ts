@@ -22,6 +22,8 @@ export async function POST(req: Request) {
       quantity = 1,
       customName,
       colorPalette,
+      customLetterColors,
+      fontStyle,
     } = await req.json();
     // Validate productName
     if (!productName) {
@@ -41,7 +43,7 @@ export async function POST(req: Request) {
             currency: "usd",
             product_data: {
               name: productName,
-              description: `Customers name: ${customName} | Colors: ${colorPalette}`,
+              description: `Customers name: ${customName} | Colors: ${colorPalette} | Custom Letter Colors: ${customLetterColors} | Font Style: ${fontStyle}`,
             },
 
             unit_amount: unitAmount,
@@ -50,8 +52,8 @@ export async function POST(req: Request) {
         },
       ],
       mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/products`,
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
     });
 
     return NextResponse.json({ url: session.url });
