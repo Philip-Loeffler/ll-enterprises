@@ -61,12 +61,38 @@ const colorPalettes = [
 ];
 
 const customColors = [
-  "#E76F51",
-  "#2A9D8F",
-  "#E9C46A",
-  "#F4A261",
-  "#264653",
-  "#8AB17D",
+  "#B00015",
+  "#AF3484",
+  "#A7A2A8",
+  "#202660",
+  "#EBECE6",
+  "#FF71B2",
+  "#488238",
+  "#9CACC3",
+  "#BCDC5D",
+  "#DAD8DD",
+  "#043424",
+  "#382D67",
+  "#F5AA01",
+  "#EACCCA",
+  "#AB92BC",
+  "#F79383",
+  "#572933",
+  "#9F6E2C",
+  "#E0C601",
+  "#9DEFD9",
+  "#C05D39",
+  "#CC174E",
+  "#0154AC",
+  "#535841",
+  "#B9A091",
+  "#37353A",
+  "#121212",
+  "#818663",
+  "#105F2F",
+  "#684438",
+  "#8D492C",
+  "#028AB8",
 ];
 
 const fontOptions = [
@@ -342,7 +368,10 @@ export const ShopSection = ({
                                   </span>
                                 </button>
                               </DialogTrigger>
-                              <DialogContent className="sm:max-w-md">
+                              <DialogContent
+                                // UPDATED: Max width to sm, and added max-h for fixed height/scroll
+                                className="sm:max-w-sm max-h-[85vh] overflow-y-auto"
+                              >
                                 <DialogHeader>
                                   <DialogTitle>
                                     Choose Color for "{char}"
@@ -351,7 +380,10 @@ export const ShopSection = ({
                                     Select a color for this letter
                                   </DialogDescription>
                                 </DialogHeader>
-                                <div className="grid grid-cols-3 gap-4 py-4">
+                                <div
+                                  // UPDATED: Added a fixed height and overflow-y-scroll for the grid itself
+                                  className="grid grid-cols-3 gap-4 py-4 h-96 overflow-y-scroll pr-2"
+                                >
                                   {customColors.map((color) => (
                                     <button
                                       key={color}
