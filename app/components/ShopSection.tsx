@@ -124,6 +124,7 @@ export const ShopSection = ({
 
   const handleNameChange = (val: string) => {
     setNameInput(val);
+    // Allowing spaces but only counting letters for the quantity/price
     const lettersOnly = val.replace(/[^a-zA-Z]/g, "");
     setLetterCount(lettersOnly.length);
     setLetterColors({});
@@ -136,8 +137,10 @@ export const ShopSection = ({
   const handleCheckout = async () => {
     if (!selectedProduct || letterCount === 0) return;
     setLoading(true);
+    // Only map colors for actual letters
     const colorMapping = nameInput
       .split("")
+      .filter((char) => char.match(/[a-zA-Z]/)) // Filter for letters only
       .map((char, i) => `${char}=${letterColors[i] || "default"}`)
       .join(", ");
 
@@ -213,54 +216,61 @@ export const ShopSection = ({
             <DialogContent className="max-h-[85vh] overflow-y-auto lg:max-w-5xl">
               {selectedProduct && (
                 <div className="flex flex-col lg:flex-row gap-8">
-                  {/* LEFT SIDE: Banner Simulation Preview */}
-                  <div className="hidden lg:flex flex-1 items-center justify-center bg-gray-100 rounded-2xl p-6 relative overflow-hidden">
-                    {/* Curved string using SVG */}
-                    <svg
-                      className="absolute top-1/3 left-0 w-full"
-                      height="120"
-                      viewBox="0 0 600 120"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M0,40 Q300,100 600,40"
-                        stroke="#9CA3AF"
-                        strokeWidth="3"
-                        fill="transparent"
-                      />
-                    </svg>
-
-                    {nameInput ? (
-                      <div
-                        className="flex justify-center items-end gap-4 relative"
-                        style={{ fontFamily: fontStyle }}
+                  {/* LEFT SIDE: Banner Simulation Preview - **UPDATED** */}
+                  <div className="hidden lg:flex flex-1 items-center justify-center bg-gray-100 rounded-2xl p-6 relative h-[400px]">
+                    {/* Centered container for string and letters */}
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg">
+                      {/* Curved string using SVG - **UPDATED POSITIONING** */}
+                      {/* Anchor the SVG's path in the middle of this container */}
+                      <svg
+                        className="absolute w-full"
+                        height="100"
+                        viewBox="0 0 600 120"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style={{ top: "50%", transform: "translateY(-50%)" }} // Vertical centering
                       >
-                        {nameInput.split("").map((char, i) => (
-                          <div
-                            key={i}
-                            className="flex flex-col items-center relative"
-                          >
-                            {/* Grey hanging line */}
-                            <div className="w-[2px] h-8 bg-gray-400 z-10" />
+                        <path
+                          d="M0,50 Q300,80 600,50" // Adjusted Q point for flatter curve near vertical center (50)
+                          stroke="#9CA3AF"
+                          strokeWidth="3"
+                          fill="transparent"
+                        />
+                      </svg>
 
-                            {/* Felt letter */}
-                            <span
-                              className="text-7xl font-bold px-2 select-none"
-                              style={{
-                                color: letterColors[i] || "#000",
-                                transform: `rotate(${Math.sin(i) * 5}deg)`,
-                              }}
+                      {nameInput ? (
+                        <div
+                          className="flex justify-center items-center gap-4 relative"
+                          style={{ fontFamily: fontStyle, height: "100px" }} // Added height to ensure space for letters
+                        >
+                          {nameInput.split("").map((char, i) => (
+                            <div
+                              key={i}
+                              className="flex flex-col items-center relative"
                             >
-                              {char}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="text-gray-400 text-center">
-                        Start typing a name to preview it here
-                      </p>
-                    )}
+                              {/* Felt letter - **ADJUSTED TO HANG** */}
+                              {/* The letter's parent div is vertically centered by items-center */}
+                              <span
+                                className="text-7xl font-bold px-2 select-none z-10"
+                                style={{
+                                  color: letterColors[i] || "#000",
+                                  // This rotates the letter slightly for a hanging effect
+                                  transform: `rotate(${
+                                    Math.sin(i) * 5
+                                  }deg) translateY(10px)`, // Pushed down 10px to "hang" off the line
+                                  lineHeight: "1", // Reduce line height to keep it snug
+                                }}
+                              >
+                                {char}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-gray-400 text-center relative z-10">
+                          Start typing a name to preview it here
+                        </p>
+                      )}
+                    </div>
                   </div>
 
                   {/* RIGHT SIDE: FORM */}
@@ -346,16 +356,24 @@ export const ShopSection = ({
                       </div>
                     </div>
 
-                    {/* Per-letter colors */}
-                    {nameInput && selectedPalette === "Choose Colors" && (
-                      <div>
-                        <p className="font-medium mb-2 mt-4">
-                          Or assign custom colors per letter:
-                        </p>
-                        <div className="flex flex-wrap gap-3">
-                          {nameInput.split("").map((char, i) => (
-                            <Dialog key={i}>
-                              <DialogTrigger asChild>
+                    {/* Per-letter colors - **CONTAINER ALWAYS RENDERED** */}
+                    {/* The content inside is conditionally rendered/hidden using Tailwind classes */}
+                    <div
+                      className={`transition-all duration-300 ease-in-out ${
+                        nameInput && selectedPalette === "Choose Colors"
+                          ? "max-h-96 opacity-100 mt-4"
+                          : "max-h-0 opacity-0 overflow-hidden"
+                      }`}
+                    >
+                      <p className="font-medium mb-2">
+                        Or assign custom colors per letter:
+                      </p>
+                      <div className="flex flex-wrap gap-3">
+                        {nameInput.split("").map((char, i) => (
+                          <Dialog key={i}>
+                            <DialogTrigger asChild>
+                              {/* Only show trigger button if it's a letter */}
+                              {char.match(/[a-zA-Z]/) && (
                                 <button className="w-16 h-16 border-2 border-black bg-white rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-center">
                                   <span
                                     className="text-4xl font-bold"
@@ -367,51 +385,43 @@ export const ShopSection = ({
                                     {char}
                                   </span>
                                 </button>
-                              </DialogTrigger>
-                              <DialogContent
-                                // UPDATED: Max width to sm, and added max-h for fixed height/scroll
-                                className="sm:max-w-sm max-h-[85vh] overflow-y-auto"
-                              >
-                                <DialogHeader>
-                                  <DialogTitle>
-                                    Choose Color for "{char}"
-                                  </DialogTitle>
-                                  <DialogDescription>
-                                    Select a color for this letter
-                                  </DialogDescription>
-                                </DialogHeader>
-                                <div
-                                  // UPDATED: Added a fixed height and overflow-y-scroll for the grid itself
-                                  className="grid grid-cols-3 gap-4 py-4 h-96 overflow-y-scroll pr-2"
-                                >
-                                  {customColors.map((color) => (
-                                    <button
-                                      key={color}
-                                      onClick={() =>
-                                        handleColorAssign(i, color)
-                                      }
-                                      className={`w-full h-20 rounded-lg border-2 transition-all ${
-                                        letterColors[i] === color
-                                          ? "ring-4 ring-blue-500 border-blue-500 scale-105"
-                                          : "border-gray-300 hover:scale-105"
-                                      }`}
-                                      style={{ backgroundColor: color }}
-                                    />
-                                  ))}
-                                </div>
-                                <DialogFooter>
-                                  <DialogClose asChild>
-                                    <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                                      Done
-                                    </button>
-                                  </DialogClose>
-                                </DialogFooter>
-                              </DialogContent>
-                            </Dialog>
-                          ))}
-                        </div>
+                              )}
+                            </DialogTrigger>
+                            <DialogContent className="sm:max-w-sm max-h-[85vh] overflow-y-auto">
+                              <DialogHeader>
+                                <DialogTitle>
+                                  Choose Color for "{char}"
+                                </DialogTitle>
+                                <DialogDescription>
+                                  Select a color for this letter
+                                </DialogDescription>
+                              </DialogHeader>
+                              <div className="grid grid-cols-3 gap-4 py-4 h-96 overflow-y-scroll pr-2">
+                                {customColors.map((color) => (
+                                  <button
+                                    key={color}
+                                    onClick={() => handleColorAssign(i, color)}
+                                    className={`w-full h-20 rounded-lg border-2 transition-all ${
+                                      letterColors[i] === color
+                                        ? "ring-4 ring-blue-500 border-blue-500 scale-105"
+                                        : "border-gray-300 hover:scale-105"
+                                    }`}
+                                    style={{ backgroundColor: color }}
+                                  />
+                                ))}
+                              </div>
+                              <DialogFooter>
+                                <DialogClose asChild>
+                                  <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                    Done
+                                  </button>
+                                </DialogClose>
+                              </DialogFooter>
+                            </DialogContent>
+                          </Dialog>
+                        ))}
                       </div>
-                    )}
+                    </div>
 
                     {/* Checkout buttons */}
                     <DialogFooter className="mt-6 flex flex-col sm:flex-row gap-3">

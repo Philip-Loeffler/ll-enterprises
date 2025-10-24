@@ -6,6 +6,7 @@ import { HeroSection } from "./components/HeroSection";
 import { WorkSection } from "./components/WorkSection";
 import { ShopSection } from "./components/ShopSection";
 import { StorySection } from "./components/StorySection";
+import { Footer } from "./components/Footer";
 
 export default function HomePage() {
   const [activeSection, setActiveSection] = useState<string>("hero");
@@ -42,6 +43,7 @@ export default function HomePage() {
         <ShopSection setActiveSection={setActiveSection} />
         <StorySection setActiveSection={setActiveSection} />
         {/* <WorkSection setActiveSection={setActiveSection} /> */}
+        {/* <Footer /> */}
       </div>
     </main>
   );
