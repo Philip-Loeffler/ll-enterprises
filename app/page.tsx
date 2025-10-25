@@ -43,7 +43,7 @@ export default function HomePage() {
         <ShopSection setActiveSection={setActiveSection} />
         <StorySection setActiveSection={setActiveSection} />
         {/* <WorkSection setActiveSection={setActiveSection} /> */}
-        {/* <Footer /> */}
+        <Footer setActiveSection={setActiveSection} />
       </div>
     </main>
   );

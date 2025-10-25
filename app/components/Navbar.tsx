@@ -10,7 +10,7 @@ interface Props {
 
 export const Navbar = ({ activeSection }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const sections = ["hero", "shop", "story", "work"];
+  const sections = ["hero", "shop", "story", "work", "faq"];
 
   const handleNavClick = (section: string) => {
     document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
