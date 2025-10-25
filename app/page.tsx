@@ -42,7 +42,7 @@ export default function HomePage() {
         <HeroSection setActiveSection={setActiveSection} />
         <ShopSection setActiveSection={setActiveSection} />
         <StorySection setActiveSection={setActiveSection} />
-        {/* <WorkSection setActiveSection={setActiveSection} /> */}
+        <WorkSection setActiveSection={setActiveSection} />
         <Footer setActiveSection={setActiveSection} />
       </div>
     </main>
