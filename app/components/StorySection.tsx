@@ -26,7 +26,7 @@ export const StorySection = ({
         <div className="flex justify-center">
           <div className="relative w-120 h-120  rounded-2xl overflow-hidden shadow-lg">
             <Image
-              src="/hannah.png"
+              src="/hannah_and_lena.png"
               alt="Our felt maker at work"
               fill
               className="object-cover"
@@ -38,9 +38,9 @@ export const StorySection = ({
         <div>
           <h2 className="text-6xl font-bold mb-4 text-gray-900">Our Story</h2>
           <p className="text-gray-600 leading-relaxed mb-4">
-            Hannah had a simple idea — to bring warmth, color, and creativity
-            into the spaces that mean the most. Each felt letter is hand-cut and
-            stitched by her who pours her hearts into every detail.
+            Hannah and Lena had a simple idea — to bring warmth, color, and
+            creativity into the spaces that mean the most. Each felt letter is
+            hand-cut and stitched by her who pours her hearts into every detail.
           </p>
           <p className="text-gray-600 leading-relaxed">
             From the first sketch to the final piece, we believe in celebrating

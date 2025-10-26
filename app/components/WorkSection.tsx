@@ -37,64 +37,27 @@ export const WorkSection = ({
           Little Banner Co offers felt design as a service. Bring your childs
           name to life.
         </p>
-        {/* <div className="grid grid-cols-3 gap-6 px-8">
-        <div className="bg-orange-100 rounded-2xl h-48"></div>
-        <div className="bg-orange-200 rounded-2xl h-48"></div>
-        <div className="bg-orange-100 rounded-2xl h-48"></div>
-      </div> */}
-        <div className="hidden md:flex">
+
+        <div className="hidden md:flex justify-center">
           <Image
-            src={"/slider1.png"}
+            src={"/lena_banner_2.jpeg"}
             alt={"slide 1"}
-            width={100}
-            height={100}
+            width={400}
+            height={400}
             className="rounded-lg object-cover"
           />
-          <Image
-            src={"/slider2.png"}
-            alt={"slide 2"}
-            width={100}
-            height={100}
-            className="rounded-lg object-cover"
-          />
-          <Image
-            src={"/slider3.png"}
-            alt={"slide 3"}
-            width={100}
-            height={100}
-            className="rounded-lg object-cover"
-          />
-          <InfiniteSlider speedOnHover={20} gap={4} className="md:hidden">
-            <Image
-              src={"/slider1.png"}
-              alt={"slide 1"}
-              width={100}
-              height={100}
-              className="rounded-lg object-cover"
-            />
-            <Image
-              src={"/slider2.png"}
-              alt={"slide 2"}
-              width={100}
-              height={100}
-              className="rounded-lg object-cover"
-            />
-            <Image
-              src={"/slider3.png"}
-              alt={"slide 3"}
-              width={100}
-              height={100}
-              className="rounded-lg object-cover"
-            />
-          </InfiniteSlider>
         </div>
         <div className="md:hidden relagive w-full max-w-xs'">
           <Carousel>
             <CarouselContent>
               <CarouselItem className="p-4">
-                <div className="flex aspect-square items-center justify-center border border-zinc-200 dark:border-zinc-800">
-                  1
-                </div>
+                <Image
+                  src={"/lena_banner_2.jpeg"}
+                  alt={"slide 1"}
+                  width={300}
+                  height={300}
+                  className="flex  items-center justify-center border border-zinc-200 dark:border-zinc-800"
+                />
               </CarouselItem>
               <CarouselItem className="p-4">
                 <div className="flex aspect-square items-center justify-center border border-zinc-200 dark:border-zinc-800">

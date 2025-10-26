@@ -14,13 +14,17 @@ import {
   DialogClose,
 } from "./ui/dialog";
 
+type ColorPalettes = {
+  label: string;
+  colors: string[];
+};
 type Product = {
   name: string;
   description: string;
   image: string;
   productName: "NameBanner" | "MiniNameBanner";
+  colorPalettes: ColorPalettes[];
 };
-
 const products: Product[] = [
   {
     name: "Custom Name Banner",
@@ -28,6 +32,20 @@ const products: Product[] = [
       "Custom felt letter banners for your child’s room or special occasion. Letters size: 5.5 x 5.5 inches. Choose any name or word!",
     image: "/name_banner.png",
     productName: "NameBanner",
+    colorPalettes: [
+      {
+        label: "Autumn Palette",
+        colors: ["#C97E63", "#D8B384", "#EFD9B4"],
+      },
+      {
+        label: "Winter Palette",
+        colors: ["#A3C9D9", "#FFFFFF", "#4F6D7A"],
+      },
+      {
+        label: "Choose Colors",
+        colors: ["#E76F51", "#2A9D8F", "#E9C46A"],
+      },
+    ],
   },
   {
     name: "Mini Name Banner",
@@ -35,28 +53,77 @@ const products: Product[] = [
       "A smaller, lightweight version perfect for nurseries, doors, or gifting.  Letters size: 4 x 4 inches.",
     image: "/mini_name_banner.png",
     productName: "MiniNameBanner",
+    colorPalettes: [
+      {
+        label: "Autumn Palette",
+        colors: ["#C97E63", "#D8B384", "#EFD9B4"],
+      },
+      {
+        label: "Winter Palette",
+        colors: ["#A3C9D9", "#FFFFFF", "#4F6D7A"],
+      },
+      {
+        label: "Choose Colors",
+        colors: ["#E76F51", "#2A9D8F", "#E9C46A"],
+      },
+    ],
   },
   {
     name: "Happy Birthday Banner",
-    description:
-      "Kickstart your custom felt creation and bring your vision to life.",
+    description: "",
     image: "/happy_birthday.png",
     productName: "NameBanner",
+    colorPalettes: [
+      {
+        label: "Autumn Palette",
+        colors: ["#C97E63", "#D8B384", "#EFD9B4"],
+      },
+      {
+        label: "Winter Palette",
+        colors: ["#A3C9D9", "#FFFFFF", "#4F6D7A"],
+      },
+      {
+        label: "Choose Colors",
+        colors: ["#E76F51", "#2A9D8F", "#E9C46A"],
+      },
+    ],
   },
-];
 
-const colorPalettes = [
   {
-    label: "Autumn Palette",
-    colors: ["#C97E63", "#D8B384", "#EFD9B4"],
+    name: "Christmas Banner",
+    description: "",
+    image: "/christmas_banner.png",
+    productName: "NameBanner",
+    colorPalettes: [
+      {
+        label: "Christmas Palette",
+        colors: ["#B00015", "#105F2F"],
+      },
+    ],
   },
   {
-    label: "Winter Palette",
-    colors: ["#A3C9D9", "#FFFFFF", "#4F6D7A"],
+    name: "Milestone Banner",
+    description: "",
+    image: "/milestone_banner.png",
+    productName: "MiniNameBanner",
+    colorPalettes: [
+      {
+        label: "Milestone Palette",
+        colors: ["#F5AA01", "#EACCCA", "#EBECE6"],
+      },
+    ],
   },
   {
-    label: "Choose Colors",
-    colors: ["#E76F51", "#2A9D8F", "#E9C46A"],
+    name: "XOXOXO Banner",
+    description: "",
+    image: "/xoxo_banner.png",
+    productName: "NameBanner",
+    colorPalettes: [
+      {
+        label: "XOXOXO Palette",
+        colors: ["#EBECE6", "#B00015", "#FF71B2"],
+      },
+    ],
   },
 ];
 
@@ -329,7 +396,7 @@ export const ShopSection = ({
                     <div className="mt-6">
                       <p className="font-medium mb-2">Choose Colors:</p>
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        {colorPalettes.map((palette) => (
+                        {product.colorPalettes.map((palette) => (
                           <button
                             key={palette.label}
                             onClick={() => setSelectedPalette(palette.label)}
