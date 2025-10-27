@@ -24,10 +24,17 @@ type Product = {
   image: string;
   productName: "NameBanner" | "MiniNameBanner";
   colorPalettes: ColorPalettes[];
+  priceMap?: any;
+};
+
+const returnPrice = (priceMap: Record<string, number>, item: number) => {
+  if (priceMap) {
+    return priceMap[item] || 0;
+  }
 };
 const products: Product[] = [
   {
-    name: "Custom Name Banner",
+    name: "Custom Banner",
     description:
       "Custom felt letter banners for your child’s room or special occasion. Letters size: 5.5 x 5.5 inches. Choose any name or word!",
     image: "/name_banner.png",
@@ -46,9 +53,10 @@ const products: Product[] = [
         colors: ["#E76F51", "#2A9D8F", "#E9C46A"],
       },
     ],
+    priceMap: { "0": 0, "1": 20, "2": 28, "3": 40, "4": 48, "5": 55 },
   },
   {
-    name: "Mini Name Banner",
+    name: "Custom Mini",
     description:
       "A smaller, lightweight version perfect for nurseries, doors, or gifting.  Letters size: 4 x 4 inches.",
     image: "/mini_name_banner.png",
@@ -67,9 +75,10 @@ const products: Product[] = [
         colors: ["#E76F51", "#2A9D8F", "#E9C46A"],
       },
     ],
+    priceMap: { "0": 0, "1": 15, "2": 20, "3": 33, "4": 38, "5": 5 },
   },
   {
-    name: "Happy Birthday Banner",
+    name: "Happy Birthday",
     description: "",
     image: "/happy_birthday.png",
     productName: "NameBanner",
@@ -90,7 +99,7 @@ const products: Product[] = [
   },
 
   {
-    name: "Christmas Banner",
+    name: "Christmas",
     description: "",
     image: "/christmas_banner.png",
     productName: "NameBanner",
@@ -102,7 +111,7 @@ const products: Product[] = [
     ],
   },
   {
-    name: "Milestone Banner",
+    name: "Milestone",
     description: "",
     image: "/milestone_banner.png",
     productName: "MiniNameBanner",
@@ -114,7 +123,7 @@ const products: Product[] = [
     ],
   },
   {
-    name: "XOXOXO Banner",
+    name: "XOXOXO",
     description: "",
     image: "/xoxo_banner.png",
     productName: "NameBanner",
@@ -236,7 +245,7 @@ export const ShopSection = ({
     <section
       id="shop"
       ref={ref}
-      className="snap-start h-screen flex flex-col items-center justify-center bg-gray-50 px-6 sm:px-12 md:mt-0 mt-100"
+      className="snap-start h-screen flex flex-col items-center justify-center bg-gray-50 px-6 sm:px-12 md:mt-0"
     >
       <h2 className="text-6xl text-gray-900 md:mt-0 font-bold mb-4">
         Custom names for you
@@ -245,7 +254,7 @@ export const ShopSection = ({
         Choose an option for our textile professionals to start creating
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 px-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 px-2 md:px-8">
         {products.map((product) => (
           <Dialog key={product.name}>
             <DialogTrigger
@@ -260,7 +269,7 @@ export const ShopSection = ({
               }}
             >
               <div
-                className={`rounded-2xl p-6 md:p-12 flex flex-col cursor-pointer transition-transform hover:scale-105 ${
+                className={`rounded-2xl p-4 md:p-12 flex self-center flex-col cursor-pointer transition-transform hover:scale-105 ${
                   product.name === "Custom Name Banner"
                     ? "bg-orange-100"
                     : "bg-gray-100"
@@ -273,9 +282,9 @@ export const ShopSection = ({
                   height={280}
                   className="rounded-lg object-cover"
                 />
-                <p className="text-lg flex justify-center pt-10 font-semibold">
+                <div className="md:text-xl text-sm  flex items-center justify-center mt-2 md:pt-10 font-semibold">
                   {product.name}
-                </p>
+                </div>
               </div>
             </DialogTrigger>
 
@@ -303,6 +312,11 @@ export const ShopSection = ({
                           fill="transparent"
                         />
                       </svg>
+
+                      {/* here we need to start a ternary for all products that are not mini or custom */}
+                      {/* make it so those have a set price, no need to map them */}
+                      {/* make the display on left already have the input of the name in */}
+                      {/* and the color palette involved in there too */}
 
                       {nameInput ? (
                         <div
@@ -362,10 +376,18 @@ export const ShopSection = ({
                         className="w-full border rounded-md px-3 py-2"
                       />
                       {nameInput && (
-                        <p className="mt-2 text-sm text-gray-600">
-                          Letter count:{" "}
-                          <span className="font-semibold">{letterCount}</span>
-                        </p>
+                        <>
+                          <p className="mt-2 text-sm text-gray-600">
+                            Letter count:{" "}
+                            <span className="font-semibold">{letterCount}</span>
+                          </p>
+                          <p className="mt-2 text-sm text-gray-600">
+                            Price per letter count:{" "}
+                            <span className="font-semibold">
+                              {returnPrice(product.priceMap, letterCount)}
+                            </span>
+                          </p>
+                        </>
                       )}
                     </div>
 

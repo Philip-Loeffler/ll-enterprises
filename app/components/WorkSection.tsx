@@ -29,7 +29,7 @@ export const WorkSection = ({
     <section
       id="work"
       ref={ref}
-      className="snap-start h-screen flex flex-col items-center  justify-center bg-gray-50 px-6 sm:px-12 md:mt-0 mt-100"
+      className="snap-start h-screen flex flex-col items-center  justify-center bg-gray-50 px-6 sm:px-12 md:mt-0"
     >
       <div>
         <h2 className="text-5xl font-bold mb-4">Cuddly, Bright, and Soft</h2>
@@ -39,13 +39,23 @@ export const WorkSection = ({
         </p>
 
         <div className="hidden md:flex justify-center">
-          <Image
-            src={"/lena_banner_2.jpeg"}
-            alt={"slide 1"}
-            width={400}
-            height={400}
-            className="rounded-lg object-cover"
-          />
+          <InfiniteSlider>
+            {" "}
+            <Image
+              src={"/lena_banner_2.jpeg"}
+              alt={"slide 1"}
+              width={400}
+              height={400}
+              className="rounded-lg object-cover"
+            />
+            <Image
+              src={"/lena_banner_2.jpeg"}
+              alt={"slide 1"}
+              width={400}
+              height={400}
+              className="rounded-lg object-cover"
+            />
+          </InfiniteSlider>
         </div>
         <div className="md:hidden relagive w-full max-w-xs'">
           <Carousel>

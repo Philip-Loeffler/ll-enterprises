@@ -19,7 +19,7 @@ export const StorySection = ({
     <section
       id="story"
       ref={ref}
-      className="snap-start h-screen flex flex-col justify-center bg-gray-50 px-6 sm:px-12 md:mt-0 mt-100"
+      className="snap-start h-screen flex flex-col justify-center bg-gray-50 px-6 sm:px-12 md:mt-0"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 max-w-6xl mx-auto">
         {/* Image side */}
