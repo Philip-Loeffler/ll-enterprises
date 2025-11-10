@@ -19,30 +19,28 @@ export const HeroSection = ({
     <section
       id="hero"
       ref={ref}
-      className="snap-start h-screen flex flex-col items-center justify-center bg-gradient-to-b from-orange-50 to-white text-center"
+      className="snap-start h-screen flex flex-col items-center justify-center text-center text-white relative overflow-hidden"
     >
-      <div className="text-3xl md:text-5xl font-bold leading-tight flex">
-        <span className="text-[#77BEF0]">L</span>
-        <span className="text-[#FFCB61]">i</span>
-        <span className="text-[#FF894F]">t</span>
-        <span className="text-[#EA5B6F]">t</span>
-        <span className="text-[#18975E]">l</span>
-        <span className="text-[#77BEF0]">e</span>
-        &nbsp;
-        <span className="text-[#FFCB61]">B</span>
-        <span className="text-[#FFCB61]">a</span>
-        <span className="text-[#FF894F]">n</span>
-        <span className="text-[#EA5B6F]">n</span>
-        <span className="text-[#18975E]">e</span>
-        <span className="text-[#77BEF0]">r</span>
-        &nbsp;
-        <span className="text-[#FFCB61]">C</span>
-        <span className="text-[#FF894F]">o</span>
-        <span className="text-[#EA5B6F]">.</span>
-        <br />
-        {/* <span className="font-extrabold text-[100px]">brand</span> */}
+      {/* Yellow Lightning Bolt Background */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-20">
+        <svg
+          viewBox="0 0 24 24"
+          className="w-[600px] h-[600px] md:w-[800px] md:h-[800px] text-yellow-400"
+          fill="currentColor"
+        >
+          <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" />
+        </svg>
       </div>
-      <p className="text-gray-500 mt-6 text-lg">Make your felt pop ✨</p>
+
+      {/* Content */}
+      <div className="relative z-10">
+        <h1 className="text-6xl md:text-8xl font-bold mb-4">
+          loveland enterprises
+        </h1>
+        <p className="text-xl md:text-2xl text-gray-200 max-w-2xl">
+          Custom felt letter banners handcrafted with care
+        </p>
+      </div>
     </section>
   );
 };
