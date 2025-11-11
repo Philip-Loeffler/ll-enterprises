@@ -298,6 +298,153 @@ const services = [
       </div>
     ),
   },
+  {
+    id: "areas-we-serve",
+    title: "Areas We Serve",
+    description: (
+      <div className="space-y-6">
+        {/* Cuyahoga County */}
+        <div>
+          <h4
+            className="font-semibold text-lg mb-3"
+            style={{ color: "#550000" }}
+          >
+            Cuyahoga County Communities
+          </h4>
+          <div className="space-y-3">
+            <div>
+              <p className="font-medium text-sm mb-1">Cities:</p>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Bay Village, Beachwood, Bedford, Bedford Heights, Berea, Brook
+                Park, Brooklyn, Cleveland, Cleveland Heights, East Cleveland,
+                Euclid, Fairview Park, Garfield Heights, Highland Heights,
+                Independence, Lakewood, Lyndhurst, Maple Heights, Mayfield
+                Heights, Middleburg Heights, North Olmsted, North Royalton,
+                Olmsted Falls, Parma, Parma Heights, Rocky River, Seven Hills,
+                Shaker Heights, Solon, South Euclid, Strongsville, University
+                Heights, Warrensville Heights, Westlake
+              </p>
+            </div>
+            <div>
+              <p className="font-medium text-sm mb-1">Villages:</p>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Bentleyville, Bratenahl, Broadview Heights, Brooklyn Heights,
+                Chagrin Falls, Cuyahoga Heights, Glenwillow, Highland Hills,
+                Hunting Valley (part), Mayfield, Moreland Hills, Newburgh
+                Heights, North Randall, Oakwood, Orange, Valley View, Walton
+                Hills, Woodmere
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Lake County */}
+        <div>
+          <h4
+            className="font-semibold text-lg mb-3"
+            style={{ color: "#550000" }}
+          >
+            Lake County Communities
+          </h4>
+          <div className="space-y-3">
+            <div>
+              <p className="font-medium text-sm mb-1">Cities:</p>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Eastlake, Kirtland, Mentor, Painesville, Wickliffe, Willoughby,
+                Willowick
+              </p>
+            </div>
+            <div>
+              <p className="font-medium text-sm mb-1">Villages:</p>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Fairport Harbor, Grand River, Kirtland Hills, Lakeline, Madison,
+                North Perry, Timberlake, Waite Hill, Perry
+              </p>
+            </div>
+            <div>
+              <p className="font-medium text-sm mb-1">Townships:</p>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Concord Township, Leroy Township, Madison Township, Painesville
+                Township, Perry Township
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Geauga County */}
+        <div>
+          <h4
+            className="font-semibold text-lg mb-3"
+            style={{ color: "#550000" }}
+          >
+            Geauga County Communities
+          </h4>
+          <div className="space-y-3">
+            <div>
+              <p className="font-medium text-sm mb-1">Cities:</p>
+              <p className="text-sm text-gray-700 leading-relaxed">Chardon</p>
+            </div>
+            <div>
+              <p className="font-medium text-sm mb-1">Villages:</p>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Aquilla, Bainbridge, Burton, Hunting Valley (part), Middlefield,
+                South Russell
+              </p>
+            </div>
+            <div>
+              <p className="font-medium text-sm mb-1">Townships:</p>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Auburn Township, Bainbridge Township, Burton Township, Chester
+                Township, Chardon Township, Claridon Township, Hambden Township,
+                Huntsburg Township, Middlefield Township, Montville Township,
+                Munson Township, Newbury Township, Parkman Township, Russell
+                Township, Thompson Township, Troy Township
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Ashtabula County */}
+        <div>
+          <h4
+            className="font-semibold text-lg mb-3"
+            style={{ color: "#550000" }}
+          >
+            Ashtabula County Communities
+          </h4>
+          <div className="space-y-3">
+            <div>
+              <p className="font-medium text-sm mb-1">Cities:</p>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Ashtabula, Conneaut, Geneva
+              </p>
+            </div>
+            <div>
+              <p className="font-medium text-sm mb-1">Villages:</p>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Andover, Geneva-on-the-Lake, Jefferson, North Kingsville,
+                Orwell, Roaming Shores
+              </p>
+            </div>
+            <div>
+              <p className="font-medium text-sm mb-1">Townships:</p>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Andover Township, Ashtabula Township, Austinburg Township,
+                Cherry Valley Township, Colebrook Township, Denmark Township,
+                Dorset Township, Geneva Township, Harpersfield Township,
+                Hartsgrove Township, Jefferson Township, Kingsville Township,
+                Lenox Township, Monroe Township, Morgan Township, New Lyme
+                Township, Orwell Township, Pierpont Township, Plymouth Township,
+                Richmond Township, Rome Township, Saybrook Township, Sheffield
+                Township, Trumbull Township, Wayne Township, Williamsfield
+                Township, Windsor Township
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+  },
 ];
 
 export const ServiceSection = ({
