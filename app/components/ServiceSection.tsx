@@ -7,220 +7,296 @@ import {
   AccordionTrigger,
 } from "@/app/components/ui/accordion";
 
-type ColorPalettes = {
-  label: string;
-  colors: string[];
-};
-type Product = {
-  name: string;
-  description: string;
-  image: string;
-  productName: "NameBanner" | "MiniNameBanner";
-  colorPalettes: ColorPalettes[];
-  priceMap?: any;
-};
-
-const returnPrice = (priceMap: Record<string, number>, item: number) => {
-  if (priceMap) {
-    return priceMap[item] || 0;
-  }
-};
-const products: Product[] = [
-  {
-    name: "Custom Banner",
-    description:
-      "Custom felt letter banners for your child’s room or special occasion. Letters size: 5.5 x 5.5 inches. Choose any name or word!",
-    image: "/name_banner.png",
-    productName: "NameBanner",
-    colorPalettes: [
-      {
-        label: "Autumn Palette",
-        colors: ["#C97E63", "#D8B384", "#EFD9B4"],
-      },
-      {
-        label: "Winter Palette",
-        colors: ["#A3C9D9", "#FFFFFF", "#4F6D7A"],
-      },
-      {
-        label: "Choose Colors",
-        colors: ["#E76F51", "#2A9D8F", "#E9C46A"],
-      },
-    ],
-    priceMap: { "0": 0, "1": 20, "2": 28, "3": 40, "4": 48, "5": 55 },
-  },
-  {
-    name: "Custom Mini",
-    description:
-      "A smaller, lightweight version perfect for nurseries, doors, or gifting.  Letters size: 4 x 4 inches.",
-    image: "/mini_name_banner.png",
-    productName: "MiniNameBanner",
-    colorPalettes: [
-      {
-        label: "Autumn Palette",
-        colors: ["#C97E63", "#D8B384", "#EFD9B4"],
-      },
-      {
-        label: "Winter Palette",
-        colors: ["#A3C9D9", "#FFFFFF", "#4F6D7A"],
-      },
-      {
-        label: "Choose Colors",
-        colors: ["#E76F51", "#2A9D8F", "#E9C46A"],
-      },
-    ],
-    priceMap: { "0": 0, "1": 15, "2": 20, "3": 33, "4": 38, "5": 5 },
-  },
-  {
-    name: "Happy Birthday",
-    description: "",
-    image: "/happy_birthday.png",
-    productName: "NameBanner",
-    colorPalettes: [
-      {
-        label: "Autumn Palette",
-        colors: ["#C97E63", "#D8B384", "#EFD9B4"],
-      },
-      {
-        label: "Winter Palette",
-        colors: ["#A3C9D9", "#FFFFFF", "#4F6D7A"],
-      },
-      {
-        label: "Choose Colors",
-        colors: ["#E76F51", "#2A9D8F", "#E9C46A"],
-      },
-    ],
-  },
-
-  {
-    name: "Christmas",
-    description: "",
-    image: "/christmas_banner.png",
-    productName: "NameBanner",
-    colorPalettes: [
-      {
-        label: "Christmas Palette",
-        colors: ["#B00015", "#105F2F"],
-      },
-    ],
-  },
-  {
-    name: "Milestone",
-    description: "",
-    image: "/milestone_banner.png",
-    productName: "MiniNameBanner",
-    colorPalettes: [
-      {
-        label: "Milestone Palette",
-        colors: ["#F5AA01", "#EACCCA", "#EBECE6"],
-      },
-    ],
-  },
-  {
-    name: "XOXOXO",
-    description: "",
-    image: "/xoxo_banner.png",
-    productName: "NameBanner",
-    colorPalettes: [
-      {
-        label: "XOXOXO Palette",
-        colors: ["#EBECE6", "#B00015", "#FF71B2"],
-      },
-    ],
-  },
-];
-
-const customColors = [
-  "#B00015",
-  "#AF3484",
-  "#A7A2A8",
-  "#202660",
-  "#EBECE6",
-  "#FF71B2",
-  "#488238",
-  "#9CACC3",
-  "#BCDC5D",
-  "#DAD8DD",
-  "#043424",
-  "#382D67",
-  "#F5AA01",
-  "#EACCCA",
-  "#AB92BC",
-  "#F79383",
-  "#572933",
-  "#9F6E2C",
-  "#E0C601",
-  "#9DEFD9",
-  "#C05D39",
-  "#CC174E",
-  "#0154AC",
-  "#535841",
-  "#B9A091",
-  "#37353A",
-  "#121212",
-  "#818663",
-  "#105F2F",
-  "#684438",
-  "#8D492C",
-  "#028AB8",
-];
-
-const fontOptions = [
-  { label: "Cooper Black", value: "'Cooper Black', serif" },
-  {
-    label: "Franklin Gothic Demi Cond",
-    value: "'Franklin Gothic Demi Cond', sans-serif",
-  },
-  { label: "WR Buruh Kota", value: "'WR Buruh Kota', sans-serif" },
-];
-
 const services = [
   {
-    id: "commercial-lighting",
-    title: "Commercial Lighting Installation",
-    description:
-      "Professional lighting solutions for businesses, warehouses, and commercial spaces. From LED retrofits to complete lighting systems, we ensure optimal illumination and energy efficiency for your commercial property.",
+    id: "residential",
+    title: "Residential",
+    description: (
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="space-y-4">
+          <p>
+            We're proud to serve homeowners across Greater Cleveland with safe,
+            reliable, and high-quality electrical work. Whether you're
+            remodeling, upgrading, or starting from the ground up, you can count
+            on our 34+ years of experience to get the job done right.
+          </p>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              New Electrical Service
+            </h4>
+            <ul className="list-disc list-inside space-y-1 ml-2">
+              <li>New construction wiring</li>
+              <li>Home remodeling projects</li>
+              <li>Room additions and renovations</li>
+              <li>Outdoor structures, garages, and patios</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Home Upgrades & Repairs
+            </h4>
+            <ul className="list-disc list-inside space-y-1 ml-2">
+              <li>
+                Fuse and breaker panel upgrades — especially important for older
+                homes or when experiencing frequent power surges
+              </li>
+              <li>
+                Historic home wiring updates for enhanced safety and reliability
+              </li>
+              <li>Outlet and switch repair or new installations</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Energy-Efficient Solutions
+            </h4>
+            <ul className="list-disc list-inside space-y-1 ml-2">
+              <li>LED lighting conversions</li>
+              <li>Dimmer and lighting control installation</li>
+              <li>Smart home automation systems</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Receptacle & Safety Concerns
+            </h4>
+            <p className="mb-2">
+              If you notice any of the following, it's time to call a licensed
+              electrician:
+            </p>
+            <ul className="list-disc list-inside space-y-1 ml-2">
+              <li>Discolored or charred outlets</li>
+              <li>Sparking when plugging in devices</li>
+              <li>Circuit breakers that frequently trip</li>
+              <li>Outlets that feel warm to the touch</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Full Home Electrical Upgrades
+            </h4>
+            <p>
+              Whether you've discovered electrical issues during a remodel or
+              recently purchased an older home, our experienced team provides
+              complete home electrical upgrades. We ensure your system is safe,
+              efficient, and ready for modern living.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              EV Charger Installation
+            </h4>
+            <p>
+              Power your future with expert installation of home EV charging
+              stations — fast, reliable, and customized to your vehicle and
+              setup.
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center justify-center">
+          <div className="w-full h-[400px] bg-muted/20 rounded-2xl border border-border flex items-center justify-center">
+            <span className="text-muted-foreground text-lg">
+              Residential Service Image
+            </span>
+          </div>
+        </div>
+      </div>
+    ),
   },
   {
-    id: "generator",
-    title: "Generator Installing",
-    description:
-      "Reliable backup power solutions for your home or business. We install and maintain standby generators to keep your property powered during outages, ensuring uninterrupted operation when you need it most.",
+    id: "commercial",
+    title: "Commercial",
+    description: (
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="space-y-4">
+          <p>
+            We've proudly supported local businesses across Northeast Ohio for
+            more than 30 years with reliable, professional electrical solutions.
+            From small business build-outs to large commercial projects, we
+            deliver craftsmanship, safety, and efficiency — every time.
+          </p>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Data & Communication Lines
+            </h4>
+            <p>
+              Ensure your business runs smoothly with properly installed and
+              organized data, phone, and communication lines. We provide clean,
+              efficient wiring setups that keep your operations connected and
+              dependable.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Office Lighting
+            </h4>
+            <p>
+              Every office has unique lighting needs. Whether you're upgrading
+              fixtures, repairing outdated wiring, or scheduling a safety
+              inspection, we bring over 35 years of expertise and
+              professionalism to every project.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Warehouse Lighting
+            </h4>
+            <p>
+              Lighting can make or break workflow and safety in warehouse
+              environments. We design and install efficient lighting systems
+              that keep your facility well-lit and energy-conscious — helping
+              you lower costs while improving visibility and productivity.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Commercial Kitchen Wiring
+            </h4>
+            <p>
+              From restaurants to cafeterias, reliable electrical systems are
+              essential to smooth operations. We provide safe, compliant, and
+              durable wiring solutions that support commercial kitchen equipment
+              and maintain uptime.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Small Business Build-Outs
+            </h4>
+            <p>
+              Whether you're opening a new space or renovating an existing one,
+              we provide complete electrical design and installation from the
+              ground up — done right the first time, with lasting results.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Exterior Lighting
+            </h4>
+            <p>
+              Make a lasting first impression and keep your property safe. We
+              install, repair, and upgrade outdoor lighting systems to ensure
+              parking lots, walkways, and building exteriors are well-lit,
+              welcoming, and secure for customers and employees alike.
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center justify-center">
+          <div className="w-full h-[400px] bg-muted/20 rounded-2xl border border-border flex items-center justify-center">
+            <span className="text-muted-foreground text-lg">
+              Commercial Service Image
+            </span>
+          </div>
+        </div>
+      </div>
+    ),
   },
   {
-    id: "wiring",
-    title: "Wiring",
-    description:
-      "Expert electrical wiring services for new construction, renovations, and upgrades. Our certified electricians ensure safe, code-compliant installations for residential and commercial properties.",
-  },
-  {
-    id: "residential-lighting",
-    title: "Residential Lighting Installs and Repairs",
-    description:
-      "Transform your home with custom lighting solutions. From recessed lighting and chandeliers to outdoor security lights, we handle all your residential lighting needs with precision and care.",
-  },
-  {
-    id: "service-changes",
-    title: "Service Changes",
-    description:
-      "Upgrade your electrical service panel to meet modern power demands. We handle panel replacements, upgrades, and expansions to ensure your electrical system is safe and up to code.",
-  },
-  {
-    id: "general-services",
-    title: "General Electric Services",
-    description:
-      "Comprehensive electrical services for all your needs. From troubleshooting and repairs to installations and maintenance, our experienced team provides reliable solutions for any electrical challenge.",
-  },
-  {
-    id: "ev-charger",
-    title: "EV Charger Services",
-    description:
-      "Professional EV charging station installation for your home or business. We install Level 2 chargers with proper wiring and circuit protection, making electric vehicle charging convenient and safe.",
-  },
-  {
-    id: "lighting-installation",
-    title: "Lighting Installation",
-    description:
-      "Expert installation of all types of lighting fixtures. Whether indoor or outdoor, decorative or functional, we bring your lighting vision to life with quality workmanship and attention to detail.",
+    id: "custom-homes",
+    title: "Custom Homes",
+    description: (
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="space-y-4">
+          <p>
+            Building a custom home is about more than construction — it's about
+            creating spaces that reflect your vision, lifestyle, and values.
+            With over 30 years of experience partnering directly with homeowners
+            and small builders, we take pride in providing electrical
+            craftsmanship that brings your dream home to life — safely,
+            beautifully, and efficiently.
+          </p>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              New Construction Electrical Design
+            </h4>
+            <p>
+              From blueprint to final inspection, we work hand-in-hand with your
+              builder or design team to plan and install a complete electrical
+              system tailored to your home's layout and future needs. Every
+              wire, outlet, and fixture is installed with precision and care.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Lighting Design & Installation
+            </h4>
+            <p>
+              Lighting can define a home's atmosphere. We help design and
+              install indoor and outdoor lighting that blends function with
+              style — including recessed, accent, landscape, and specialty
+              lighting to make your home truly shine.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Smart Home & Technology Integration
+            </h4>
+            <p>
+              We install smart switches, lighting controls, whole-home
+              automation systems, and integrated technology that bring comfort
+              and convenience to everyday living.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Panel & Power Distribution
+            </h4>
+            <p>
+              Your custom home deserves a system built to handle modern demands.
+              We ensure proper load balance, safe panel setup, and future-ready
+              capacity for EV chargers, additions, or new technologies down the
+              road.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Luxury & Specialty Features
+            </h4>
+            <p>
+              Whether it's heated floors, pool and spa wiring, or designer
+              fixture installations, we deliver premium-quality electrical
+              solutions that complement your home's unique features and finish.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-2" style={{ color: "#550000" }}>
+              Builder Partnerships
+            </h4>
+            <p>
+              We partner with small builders and renovation specialists who
+              value reliability, clear communication, and superior workmanship.
+              Our team ensures each project is completed on time, to code, and
+              to the highest standard — because reputation matters.
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center justify-center">
+          <div className="w-full h-[400px] bg-muted/20 rounded-2xl border border-border flex items-center justify-center">
+            <span className="text-muted-foreground text-lg">
+              Custom Homes Service Image
+            </span>
+          </div>
+        </div>
+      </div>
+    ),
   },
 ];
 
@@ -239,38 +315,28 @@ export const ServiceSection = ({
     <section
       id="service"
       ref={ref}
-      className="snap-start min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 py-20"
+      className="min-h-screen flex flex-col items-center justify-center px-6 sm:px-12 py-20 bg-white"
     >
-      <h2 className="text-6xl font-bold mb-4 text-center text-white">
+      <h2 className="text-6xl font-bold mb-4 text-center text-black">
         Our Services
       </h2>
-      <p className="text-xl text-gray-200 max-w-3xl text-center mb-12">
+      <p className="text-xl text-gray-600 max-w-3xl text-center mb-12">
         Professional electrical services for residential and commercial needs
       </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl w-full">
-        {/* Left Column - Accordion */}
-        <div className="flex flex-col justify-center">
-          <Accordion type="single" collapsible className="w-full">
-            {services.map((service) => (
-              <AccordionItem key={service.id} value={service.id}>
-                <AccordionTrigger className="text-lg font-semibold text-foreground hover:text-primary">
-                  {service.title}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {service.description}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-
-        {/* Right Column - Image Space */}
-        <div className="flex items-center justify-center">
-          <div className="w-full h-[600px] bg-muted/20 rounded-2xl border border-border flex items-center justify-center">
-            <span className="text-muted-foreground text-lg">Service Image</span>
-          </div>
-        </div>
+      <div className="max-w-7xl w-full">
+        <Accordion type="single" collapsible className="w-full">
+          {services.map((service) => (
+            <AccordionItem key={service.id} value={service.id}>
+              <AccordionTrigger className="text-lg font-semibold text-black hover:opacity-70">
+                {service.title}
+              </AccordionTrigger>
+              <AccordionContent className="text-gray-700">
+                {service.description}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </section>
   );

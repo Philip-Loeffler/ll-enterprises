@@ -67,12 +67,12 @@ export const ReviewSection = ({
     <section
       id="review"
       ref={ref}
-      className="snap-start h-screen flex flex-col items-center justify-center px-6 sm:px-12 py-20"
+      className="h-screen flex flex-col items-center justify-center px-6 sm:px-12 py-20 bg-white"
     >
-      <h2 className="text-6xl font-bold mb-4 text-center text-white">
+      <h2 className="text-6xl font-bold mb-4 text-center text-black">
         Customer Reviews
       </h2>
-      <p className="text-xl text-gray-200 max-w-3xl text-center mb-12">
+      <p className="text-xl text-gray-600 max-w-3xl text-center mb-12">
         See what our customers are saying about our electrical services
       </p>
 
@@ -80,16 +80,19 @@ export const ReviewSection = ({
         {reviews.map((review) => (
           <div
             key={review.id}
-            className="bg-card/50 backdrop-blur-sm rounded-2xl border border-border p-8 hover:border-primary transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 flex flex-col"
+            className="bg-gray-50 rounded-2xl border border-gray-200 p-8 hover:border-[#550000] transition-all duration-300 hover:shadow-lg flex flex-col"
           >
             {/* Avatar and Name */}
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg">
+              <div
+                className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg text-white"
+                style={{ backgroundColor: "#550000" }}
+              >
                 {review.avatar}
               </div>
               <div>
-                <h3 className="font-semibold text-foreground">{review.name}</h3>
-                <p className="text-sm text-muted-foreground">{review.date}</p>
+                <h3 className="font-semibold text-black">{review.name}</h3>
+                <p className="text-sm text-gray-600">{review.date}</p>
               </div>
             </div>
 
@@ -98,8 +101,9 @@ export const ReviewSection = ({
               {Array.from({ length: review.rating }).map((_, i) => (
                 <svg
                   key={i}
-                  className="w-5 h-5 fill-primary"
+                  className="w-5 h-5"
                   viewBox="0 0 20 20"
+                  fill="#550000"
                 >
                   <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
                 </svg>
@@ -107,7 +111,7 @@ export const ReviewSection = ({
             </div>
 
             {/* Review Text */}
-            <p className="text-muted-foreground leading-relaxed flex-grow">
+            <p className="text-gray-700 leading-relaxed flex-grow">
               "{review.text}"
             </p>
           </div>
@@ -116,7 +120,7 @@ export const ReviewSection = ({
 
       {/* Loading/Status indicator */}
       {loading && (
-        <p className="mt-8 text-sm text-muted-foreground">Loading reviews...</p>
+        <p className="mt-8 text-sm text-gray-600">Loading reviews...</p>
       )}
     </section>
   );

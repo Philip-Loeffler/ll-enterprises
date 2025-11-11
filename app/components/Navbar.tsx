@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import loveland from "../../public/assets/loveland.png";
 
 interface Props {
   activeSection: string;
@@ -12,9 +13,10 @@ export const Navbar = ({ activeSection }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const sections = [
     { id: "hero", label: "Home" },
+    { id: "about", label: "About Us" },
     { id: "service", label: "Services" },
     { id: "review", label: "Reviews" },
-    { id: "contact", label: "Contact" },
+    { id: "contact", label: "How Can We Help?" },
   ];
 
   const handleNavClick = (sectionId: string) => {
@@ -23,15 +25,9 @@ export const Navbar = ({ activeSection }: Props) => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-oklch(12.9% 0.042 264.695) backdrop-blur-md flex justify-between items-center px-8 py-4 z-50">
+    <nav className="fixed top-0 left-0 w-full bg-white flex items-center px-8 py-2 z-50">
       <div className="flex items-center gap-3">
-        <svg
-          viewBox="0 0 24 24"
-          className="w-8 h-8 text-yellow-400"
-          fill="currentColor"
-        >
-          <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" />
-        </svg>
+        <img src={loveland.src} alt="Loveland Logo" className="w-50 h-30" />
         <h1 className="font-bold text-white text-xl"></h1>
       </div>
 
@@ -41,7 +37,7 @@ export const Navbar = ({ activeSection }: Props) => {
           <button
             key={section.id}
             className={`text-sm font-medium transition-colors ${
-              activeSection === section.id ? "text-white" : "text-gray-400"
+              activeSection === section.id ? "text-black" : "text-gray-400"
             }`}
             onClick={() => handleNavClick(section.id)}
           >

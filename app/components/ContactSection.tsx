@@ -114,24 +114,24 @@ export const ContactSection = ({
     <section
       id="contact"
       ref={ref}
-      className="snap-start h-screen flex flex-col items-center justify-center px-6 sm:px-12 md:mt-0"
+      className="h-screen flex flex-col items-center justify-center px-6 sm:px-12 md:mt-0 bg-white"
     >
       <div className="max-w-2xl w-full">
-        <h2 className="text-6xl font-bold mb-4 text-white text-center">
-          Contact Us
+        <h2 className="text-6xl font-bold mb-4 text-black text-center">
+          How Can We Help
         </h2>
-        <p className="text-xl text-gray-200 mb-8 text-center">
+        <p className="text-xl text-gray-600 mb-8 text-center">
           Get in touch for electrical services
         </p>
 
         <form
           onSubmit={handleSubmit}
-          className="space-y-6 bg-card/50 backdrop-blur-sm p-8 rounded-2xl border border-border"
+          className="space-y-6 bg-gray-50 p-8 rounded-2xl border border-gray-200"
         >
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-white mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Name
             </label>
@@ -142,7 +142,7 @@ export const ContactSection = ({
               value={formData.name}
               onChange={handleInputChange}
               required
-              className="w-full px-4 py-3 rounded-lg bg-background/80 border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-[#550000]"
               placeholder="Your name"
             />
           </div>
@@ -150,7 +150,7 @@ export const ContactSection = ({
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-white mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Email
             </label>
@@ -161,7 +161,7 @@ export const ContactSection = ({
               value={formData.email}
               onChange={handleInputChange}
               required
-              className="w-full px-4 py-3 rounded-lg bg-background/80 border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-[#550000]"
               placeholder="your.email@example.com"
             />
           </div>
@@ -169,7 +169,7 @@ export const ContactSection = ({
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium text-white mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Phone Number
             </label>
@@ -180,7 +180,7 @@ export const ContactSection = ({
               value={formData.phone}
               onChange={handleInputChange}
               required
-              className="w-full px-4 py-3 rounded-lg bg-background/80 border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-[#550000]"
               placeholder="(555) 123-4567"
             />
           </div>
@@ -188,7 +188,7 @@ export const ContactSection = ({
           <div>
             <label
               htmlFor="message"
-              className="block text-sm font-medium text-white mb-2"
+              className="block text-sm font-medium text-black mb-2"
             >
               Message
             </label>
@@ -199,7 +199,7 @@ export const ContactSection = ({
               value={formData.message}
               onChange={handleInputChange}
               required
-              className="w-full px-4 py-3 rounded-lg bg-background/80 border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+              className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-[#550000] resize-none"
               placeholder="Tell us about your electrical needs..."
             />
           </div>
@@ -207,7 +207,14 @@ export const ContactSection = ({
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-4 px-6 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full text-white font-semibold py-4 px-6 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{ backgroundColor: "#550000" }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = "#440000")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#550000")
+            }
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </button>
@@ -229,7 +236,14 @@ export const ContactSection = ({
           <div className="flex justify-center pt-4">
             <button
               onClick={() => setShowSuccessModal(false)}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-2 px-6 rounded-lg transition-colors"
+              className="text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+              style={{ backgroundColor: "#550000" }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.backgroundColor = "#440000")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.backgroundColor = "#550000")
+              }
             >
               Close
             </button>
