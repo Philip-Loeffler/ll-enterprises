@@ -1,5 +1,5 @@
+import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -100,11 +100,11 @@ const services = [
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <div className="w-full h-[400px] bg-muted/20 rounded-2xl border border-border flex items-center justify-center">
-            <span className="text-muted-foreground text-lg">
-              Residential Service Image
-            </span>
-          </div>
+          <img
+            src="/assets/service_1.jpeg"
+            alt="Residential Electrical Services"
+            className="w-full h-[400px] object-cover rounded-2xl shadow-lg"
+          />
         </div>
       </div>
     ),
@@ -194,11 +194,11 @@ const services = [
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <div className="w-full h-[400px] bg-muted/20 rounded-2xl border border-border flex items-center justify-center">
-            <span className="text-muted-foreground text-lg">
-              Commercial Service Image
-            </span>
-          </div>
+          <img
+            src="/assets/service_2.jpeg"
+            alt="Commercial Electrical Services"
+            className="w-full h-[400px] object-cover rounded-2xl shadow-lg"
+          />
         </div>
       </div>
     ),
@@ -289,11 +289,11 @@ const services = [
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <div className="w-full h-[400px] bg-muted/20 rounded-2xl border border-border flex items-center justify-center">
-            <span className="text-muted-foreground text-lg">
-              Custom Homes Service Image
-            </span>
-          </div>
+          <img
+            src="/assets/service_3.jpeg"
+            alt="Custom Homes Electrical Services"
+            className="w-full h-[400px] object-cover rounded-2xl shadow-lg"
+          />
         </div>
       </div>
     ),

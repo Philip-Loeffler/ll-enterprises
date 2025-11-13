@@ -24,7 +24,7 @@ export const HeroSection = ({
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center max-w-6xl w-full">
         {/* Logo */}
-        <div className="mb-12">
+        <div className="mb-0">
           <img
             src="/assets/loveland.png"
             alt="Loveland Enterprises Inc."
@@ -35,7 +35,7 @@ export const HeroSection = ({
         {/* Lightning Bolt and Text Container */}
         <div className="flex items-center gap-8 md:gap-12 max-w-4xl">
           {/* Lightning Bolt */}
-          <div className="flex-shrink-0">
+          {/* <div className="flex-shrink-0">
             <svg
               viewBox="0 0 24 24"
               className="w-24 h-24 md:w-32 md:h-32"
@@ -43,7 +43,7 @@ export const HeroSection = ({
             >
               <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" />
             </svg>
-          </div>
+          </div> */}
 
           {/* Text Content */}
           <div className="text-left">
@@ -61,6 +61,12 @@ export const HeroSection = ({
             </h2>
           </div>
         </div>
+        <a
+          href="#contact"
+          className="inline-block mt-10 rounded-lg bg-[#550000] px-8 py-3 text-white font-semibold shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+        >
+          Get a Free Estimate
+        </a>
       </div>
     </section>
   );

@@ -77,10 +77,12 @@ export const ReviewSection = ({
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl w-full">
-        {reviews.map((review) => (
+        {reviews.map((review, index) => (
           <div
             key={review.id}
-            className="bg-gray-50 rounded-2xl border border-gray-200 p-8 hover:border-[#550000] transition-all duration-300 hover:shadow-lg flex flex-col"
+            className={`bg-gray-50 rounded-2xl border border-gray-200 p-8 hover:border-[#550000] transition-all duration-300 hover:shadow-lg flex flex-col ${
+              index === 2 ? "hidden md:flex" : ""
+            }`}
           >
             {/* Avatar and Name */}
             <div className="flex items-center gap-4 mb-4">

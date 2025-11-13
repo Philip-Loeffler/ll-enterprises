@@ -15,26 +15,25 @@ export const AboutSection = ({
   }, [inView, setActiveSection]);
 
   return (
-    <section
-      id="about"
-      ref={ref}
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
-    >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80')",
-        }}
-      >
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
-      </div>
+    <section id="about" ref={ref} className="min-h-screen flex overflow-hidden">
+      {/* Content Container */}
+      <div className="flex w-full flex-col lg:flex-row justify-center gap-8 px-6 sm:px-12 py-20">
+        {/* Images side by side */}
+        <div className="lg:flex pt-2 lg:flex-row gap-4 justify-center">
+          <img
+            className="lg:h-[50vh] lg:h-[100vh] w-auto rounded-xl object-cover"
+            src="/assets/vintage_rick.png"
+            alt="Loveland Enterprises Inc."
+          />
+          <img
+            className="lg:h-[50vh] pt-2 lg:pt-0 lg:h-[100vh] w-auto rounded-xl object-cover"
+            src="/assets/vintage_rick_2.png"
+            alt="Loveland Enterprises Inc."
+          />
+        </div>
 
-      {/* Content - positioned on the right side */}
-      <div className="relative z-10 max-w-7xl w-full px-6 sm:px-12 py-20 flex justify-end">
-        <div className="max-w-2xl bg-white/95 backdrop-blur-sm p-8 sm:p-12 rounded-2xl shadow-2xl">
+        {/* About Us Card - below on mobile, to the right on desktop */}
+        <div className="max-w-xl bg-white/95 backdrop-blur-sm p-8 sm:p-12 rounded-2xl shadow-2xl">
           <h2 className="text-5xl font-bold mb-6 text-black">About Us</h2>
 
           <div className="space-y-4 text-gray-700 leading-relaxed">

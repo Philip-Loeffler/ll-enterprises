@@ -114,7 +114,7 @@ export const ContactSection = ({
     <section
       id="contact"
       ref={ref}
-      className="h-screen flex flex-col items-center justify-center px-6 sm:px-12 md:mt-0 bg-white"
+      className="h-screen flex flex-col items-center justify-center px-6 sm:px-12 py-20 bg-white"
     >
       <div className="max-w-2xl w-full">
         <h2 className="text-6xl font-bold mb-4 text-black text-center">
