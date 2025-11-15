@@ -30,7 +30,7 @@ export const Navbar = ({ activeSection }: Props) => {
         <img
           src={loveland.src}
           alt="Loveland Logo"
-          className="w-32 h-auto md:w-48 md:h-auto"
+          className="w-64 h-auto md:w-48 md:h-auto"
         />
         <h1 className="font-bold text-white text-xl"></h1>
       </div>

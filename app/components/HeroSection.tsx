@@ -24,13 +24,13 @@ export const HeroSection = ({
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center max-w-6xl w-full">
         {/* Logo */}
-        <div className="mb-0">
+        {/* <div className="mb-0">
           <img
             src="/assets/loveland.png"
             alt="Loveland Enterprises Inc."
             className="h-full w-full"
           />
-        </div>
+        </div> */}
 
         {/* Lightning Bolt and Text Container */}
         <div className="flex items-center gap-8 md:gap-12 max-w-4xl">
@@ -54,10 +54,9 @@ export const HeroSection = ({
               Electrical contracting services built on 34+ years of experience
             </h1>
             <h2 className="text-xl md:text-2xl text-gray-600">
-              Proudly serving homeowners and businesses throughout Cuyahoga,
-              Lake, Geauga, and Ashtabula Counties — whether you’re on the west
-              side, east side, or along the Lake Erie shoreline, our team
-              delivers expert electrical service with integrity and precision.{" "}
+              Proudly serving homeowners and businesses throughout northeast
+              Ohio, our team delivers expert electrical service with integrity
+              and precision.{" "}
             </h2>
           </div>
         </div>

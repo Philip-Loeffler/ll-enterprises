@@ -10,6 +10,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/app/components/ui/dialog";
+import { ScrollInFromLeft } from "./ui/scrollInFromLeft";
 
 export const ContactSection = ({
   setActiveSection,
@@ -116,127 +117,99 @@ export const ContactSection = ({
       ref={ref}
       className="h-screen flex flex-col items-center justify-center px-6 sm:px-12 py-20 bg-white"
     >
-      <div className="max-w-2xl w-full">
-        <h2 className="text-6xl font-bold mb-4 text-black text-center">
-          How Can We Help
-        </h2>
-        <p className="text-xl text-gray-600 mb-8 text-center">
-          Get in touch for electrical services
-        </p>
+      <ScrollInFromLeft>
+        <div className="max-w-2xl w-full">
+          <h2 className="text-6xl font-bold mb-4 text-black text-center">
+            How Can We Help
+          </h2>
+          <p className="text-xl text-gray-600 mb-8 text-center">
+            Get in touch for electrical services
+          </p>
 
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-6 bg-gray-50 p-8 rounded-2xl border border-gray-200"
-        >
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-black mb-2"
-            >
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-[#550000]"
-              placeholder="Your name"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-black mb-2"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-[#550000]"
-              placeholder="your.email@example.com"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="phone"
-              className="block text-sm font-medium text-black mb-2"
-            >
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-[#550000]"
-              placeholder="(555) 123-4567"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium text-black mb-2"
-            >
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={4}
-              value={formData.message}
-              onChange={handleInputChange}
-              required
-              className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-[#550000] resize-none"
-              placeholder="Tell us about your electrical needs..."
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full text-white font-semibold py-4 px-6 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
-            style={{ backgroundColor: "#550000" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = "#440000")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = "#550000")
-            }
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-6 bg-gray-50 p-8 rounded-2xl border border-gray-200"
           >
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </button>
-        </form>
-      </div>
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-black mb-2"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-[#550000]"
+                placeholder="Your name"
+              />
+            </div>
 
-      {/* Success Modal */}
-      <Dialog open={showSuccessModal} onOpenChange={setShowSuccessModal}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-center">
-              Message Sent! 🎉
-            </DialogTitle>
-            <DialogDescription className="text-center text-base pt-2">
-              Thank you for reaching out! We&apos;ll get back to you as soon as
-              possible.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="flex justify-center pt-4">
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-black mb-2"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-[#550000]"
+                placeholder="your.email@example.com"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="phone"
+                className="block text-sm font-medium text-black mb-2"
+              >
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-[#550000]"
+                placeholder="(555) 123-4567"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-black mb-2"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-[#550000] resize-none"
+                placeholder="Tell us about your electrical needs..."
+              />
+            </div>
+
             <button
-              onClick={() => setShowSuccessModal(false)}
-              className="text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full text-white font-semibold py-4 px-6 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
               style={{ backgroundColor: "#550000" }}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.backgroundColor = "#440000")
@@ -245,11 +218,41 @@ export const ContactSection = ({
                 (e.currentTarget.style.backgroundColor = "#550000")
               }
             >
-              Close
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
-          </div>
-        </DialogContent>
-      </Dialog>
+          </form>
+        </div>
+
+        {/* Success Modal */}
+        <Dialog open={showSuccessModal} onOpenChange={setShowSuccessModal}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-bold text-center">
+                Message Sent! 🎉
+              </DialogTitle>
+              <DialogDescription className="text-center text-base pt-2">
+                Thank you for reaching out! We&apos;ll get back to you as soon
+                as possible.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="flex justify-center pt-4">
+              <button
+                onClick={() => setShowSuccessModal(false)}
+                className="text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+                style={{ backgroundColor: "#550000" }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#440000")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#550000")
+                }
+              >
+                Close
+              </button>
+            </div>
+          </DialogContent>
+        </Dialog>
+      </ScrollInFromLeft>
     </section>
   );
 };
