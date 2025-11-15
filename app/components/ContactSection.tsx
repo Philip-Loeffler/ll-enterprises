@@ -29,7 +29,7 @@ export const ContactSection = ({
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-
+  console.log("push");
   useEffect(() => {
     if (inView) setActiveSection("contact");
   }, [inView, setActiveSection]);
