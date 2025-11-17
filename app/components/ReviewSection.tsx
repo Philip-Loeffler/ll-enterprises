@@ -74,7 +74,7 @@ export const ReviewSection = ({
         <h2 className="text-6xl font-bold mb-4 text-center text-black">
           Customer Reviews
         </h2>
-        <p className="text-xl text-gray-600 max-w-3xl text-center mb-12">
+        <p className="text-xl text-gray-600 w-full text-center mb-12">
           See what our customers are saying about our electrical services
         </p>
 

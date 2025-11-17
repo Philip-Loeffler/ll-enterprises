@@ -19,18 +19,18 @@ export const HeroSection = ({
     <section
       id="hero"
       ref={ref}
-      className="h-screen flex flex-col items-center justify-center text-black relative overflow-hidden bg-white px-4"
+      className="h-screen flex flex-col items-center justify-center text-black relative overflow-hidden bg-white px-8 lg:px-0 mt-14"
     >
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center max-w-6xl w-full">
+      <div className="relative z-10 flex flex-col items-center w-full">
         {/* Logo */}
-        {/* <div className="mb-0">
+        <div className="mb-0">
           <img
-            src="/assets/loveland.png"
+            src="/assets/bw_rick.png"
             alt="Loveland Enterprises Inc."
             className="h-full w-full"
           />
-        </div> */}
+        </div>
 
         {/* Lightning Bolt and Text Container */}
         <div className="flex items-center gap-8 md:gap-12 max-w-4xl">
@@ -48,7 +48,7 @@ export const HeroSection = ({
           {/* Text Content */}
           <div className="text-left">
             <h1
-              className="text-2xl md:text-4xl font-bold mb-4"
+              className="text-2xl md:text-4xl font-bold mb-4 mt-10"
               style={{ color: "#550000" }}
             >
               Electrical contracting services built on 34+ years of experience
@@ -60,12 +60,12 @@ export const HeroSection = ({
             </h2>
           </div>
         </div>
-        <a
+        {/* <a
           href="#contact"
           className="inline-block mt-10 rounded-lg bg-[#550000] px-8 py-3 text-white font-semibold shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg"
         >
           Get a Free Estimate
-        </a>
+        </a> */}
       </div>
     </section>
   );
