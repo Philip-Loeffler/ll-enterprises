@@ -117,8 +117,8 @@ export const ContactSection = ({
       ref={ref}
       className="h-screen flex flex-col items-center justify-center px-6 sm:px-12 py-20 bg-white"
     >
-      <ScrollInFromLeft>
-        <div className="max-w-2xl w-full">
+      <div className="max-w-2xl w-full">
+        <ScrollInFromLeft>
           <h2 className="text-6xl font-bold mb-4 text-black text-center">
             How Can We Help
           </h2>
@@ -221,38 +221,38 @@ export const ContactSection = ({
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
-        </div>
 
-        {/* Success Modal */}
-        <Dialog open={showSuccessModal} onOpenChange={setShowSuccessModal}>
-          <DialogContent className="sm:max-w-md">
-            <DialogHeader>
-              <DialogTitle className="text-2xl font-bold text-center">
-                Message Sent! 🎉
-              </DialogTitle>
-              <DialogDescription className="text-center text-base pt-2">
-                Thank you for reaching out! We&apos;ll get back to you as soon
-                as possible.
-              </DialogDescription>
-            </DialogHeader>
-            <div className="flex justify-center pt-4">
-              <button
-                onClick={() => setShowSuccessModal(false)}
-                className="text-white font-semibold py-2 px-6 rounded-lg transition-colors"
-                style={{ backgroundColor: "#550000" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.backgroundColor = "#440000")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.backgroundColor = "#550000")
-                }
-              >
-                Close
-              </button>
-            </div>
-          </DialogContent>
-        </Dialog>
-      </ScrollInFromLeft>
+          {/* Success Modal */}
+          <Dialog open={showSuccessModal} onOpenChange={setShowSuccessModal}>
+            <DialogContent className="sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold text-center">
+                  Message Sent! 🎉
+                </DialogTitle>
+                <DialogDescription className="text-center text-base pt-2">
+                  Thank you for reaching out! We&apos;ll get back to you as soon
+                  as possible.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="flex justify-center pt-4">
+                <button
+                  onClick={() => setShowSuccessModal(false)}
+                  className="text-white font-semibold py-2 px-6 rounded-lg transition-colors"
+                  style={{ backgroundColor: "#550000" }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.backgroundColor = "#440000")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.backgroundColor = "#550000")
+                  }
+                >
+                  Close
+                </button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </ScrollInFromLeft>
+      </div>
     </section>
   );
 };

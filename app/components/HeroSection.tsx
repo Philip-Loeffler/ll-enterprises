@@ -19,7 +19,7 @@ export const HeroSection = ({
     <section
       id="hero"
       ref={ref}
-      className="h-screen flex flex-col items-center justify-center text-black relative overflow-hidden bg-white px-8 lg:px-0 mt-14"
+      className="h-screen flex flex-col items-center justify-center text-black relative overflow-hidden bg-white px-0  mt-14"
     >
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center w-full">
@@ -33,7 +33,7 @@ export const HeroSection = ({
         </div>
 
         {/* Lightning Bolt and Text Container */}
-        <div className="flex items-center gap-8 md:gap-12 max-w-4xl">
+        <div className="flex items-center gap-8 md:gap-12 max-w-4xl px-8 lg:px-0">
           {/* Lightning Bolt */}
           {/* <div className="flex-shrink-0">
             <svg
@@ -48,16 +48,16 @@ export const HeroSection = ({
           {/* Text Content */}
           <div className="text-left">
             <h1
-              className="text-2xl md:text-4xl font-bold mb-4 mt-10"
+              className="text-2xl md:text-4xl font-bold mb-4 mt-6"
               style={{ color: "#550000" }}
             >
               Electrical contracting services built on 34+ years of experience
             </h1>
-            <h2 className="text-xl md:text-2xl text-gray-600">
+            <p className="text-xl md:text-lg text-gray-600">
               Proudly serving homeowners and businesses throughout northeast
               Ohio, our team delivers expert electrical service with integrity
               and precision.{" "}
-            </h2>
+            </p>
           </div>
         </div>
         {/* <a
