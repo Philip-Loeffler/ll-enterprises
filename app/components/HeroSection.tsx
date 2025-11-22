@@ -24,7 +24,7 @@ export const HeroSection = ({
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center w-full">
         {/* Logo */}
-        <div className="mb-0 w-full max-h-[400px] md:max-h-[650px] overflow-hidden">
+        <div className="mb-0 w-full max-h-[400px] md:max-h-[750px] overflow-hidden">
           <img
             src="/assets/bw_rick2.png"
             alt="Loveland Enterprises Inc."
