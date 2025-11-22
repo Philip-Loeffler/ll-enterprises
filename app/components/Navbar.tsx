@@ -25,12 +25,12 @@ export const Navbar = ({ activeSection }: Props) => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white flex items-center justify-between px-8 py-2 z-50">
+    <nav className="fixed top-0 left-0 w-full bg-white flex items-center justify-between px-6 lg:px-8 py-2 z-50">
       <div className="flex items-center gap-3">
         <img
           src={loveland.src}
           alt="Loveland Logo"
-          className="w-64 h-auto md:w-48 md:h-auto"
+          className="w-52 h-auto md:w-48 md:h-auto"
         />
         <h1 className="font-bold text-white text-xl"></h1>
       </div>

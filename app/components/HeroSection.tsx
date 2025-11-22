@@ -24,11 +24,11 @@ export const HeroSection = ({
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center w-full">
         {/* Logo */}
-        <div className="mb-0">
+        <div className="mb-0 w-full max-h-[400px] md:max-h-[650px] overflow-hidden">
           <img
-            src="/assets/bw_rick.png"
+            src="/assets/bw_rick2.png"
             alt="Loveland Enterprises Inc."
-            className="h-full w-full"
+            className="w-full h-full object-cover object-top"
           />
         </div>
 
@@ -46,14 +46,15 @@ export const HeroSection = ({
           </div> */}
 
           {/* Text Content */}
-          <div className="text-left">
+          <div className="text-center">
             <h1
-              className="text-2xl md:text-4xl font-bold mb-4 mt-6"
+              className="text-lg md:text-4xl font-bold mb-4 mt-6"
               style={{ color: "#550000" }}
             >
-              Electrical contracting services built on 34+ years of experience
+              Electrical contracting services built on 34+ years of experience,
+              trust, and heart.
             </h1>
-            <p className="text-xl md:text-lg text-gray-600">
+            <p className="text-md md:text-lg text-gray-600">
               Proudly serving homeowners and businesses throughout northeast
               Ohio, our team delivers expert electrical service with integrity
               and precision.{" "}
